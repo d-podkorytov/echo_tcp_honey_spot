@@ -11,5 +11,3 @@ For running it on all TCP ports just:
 2) run ERLANG VM 
    $sudo erl
 3) type echo_tcp:start(1,65535).
-
-If running it on single port default port is 2323.

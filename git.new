@@ -1,0 +1,31 @@
+#!/bin/sh
+
+read -p OS USER: USER
+#d-podkorytov
+read -p PROJECT: PROJECT
+
+URL=git@github.com:$USER/$PROJECT.git
+COMMIT=`date +%T__%d-%m-%Y`
+
+echo Commit=$COMMIT URL=$URL PROJECT=$PROJECT
+git init
+git remote add origin $URL
+git commit -am "first commit"
+git pull origin master
+git push origin master
+
+exit
+
+for i in README.md Makefile
+do
+git add $i
+done
+
+for i in `ls *.c`
+do
+git add $i
+done
+
+git commit 
+git push origin master
+

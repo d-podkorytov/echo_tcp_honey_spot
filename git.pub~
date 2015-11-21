@@ -1,0 +1,20 @@
+#!/bin/sh
+
+USER=d-podkorytov
+PROJECT=$1
+URL=git@github.com:$USER/$PROJECT.git
+COMMIT=`date +%T__%d-%m-%Y`
+
+for i in README.md Makefile LICENSE
+do
+git add $i
+done
+
+for i in `ls *.c *.erl`
+do
+git add $i
+done
+
+git commit 
+git push origin master
+

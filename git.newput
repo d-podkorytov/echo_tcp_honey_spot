@@ -1,0 +1,28 @@
+#!/bin/sh
+
+read -p OS USER: USER
+#d-podkorytov
+read -p PROJECT: PROJECT
+
+URL=git@github.com:$USER/$PROJECT.git
+COMMIT=`date +%T__%d-%m-%Y`
+
+echo --== Init and load from GIT
+
+echo Commit=$COMMIT URL=$URL PROJECT=$PROJECT
+git init
+git remote add origin $URL
+git commit -am "first commit"
+git pull origin master
+git push origin master
+
+echo --== Publishing to GIT
+
+for i in `ls *`
+do
+ git add $i
+done
+
+git commit 
+git push origin master
+
